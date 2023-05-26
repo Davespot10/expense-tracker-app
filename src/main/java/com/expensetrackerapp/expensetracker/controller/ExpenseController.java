@@ -14,18 +14,18 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
     @PostMapping("/addExpense")
-    public String addExpense(Expense expense){
+    public String addExpense(@RequestBody Expense expense){
         expenseService.addExpense(expense);
         return "Expense added Successfully";
 
     }
     @GetMapping("getOne/{expenseId}")
-    public Optional<Expense> getExpense(Long expenseId){
+    public Optional<Expense> getExpense(@PathVariable Long expenseId){
         return expenseService.getExpensebyId(expenseId);
 
     }
-    @DeleteMapping("/deleteExpense")
-    public String deleteExpense(Long expenseId){
+    @DeleteMapping("/deleteExpense/{expenseId}")
+    public String deleteExpense(@PathVariable Long expenseId){
         expenseService.deleteExpense(expenseId);
         return "Expense deleted Successfully";
     }

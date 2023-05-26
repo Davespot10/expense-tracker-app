@@ -16,18 +16,18 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/addUser")
-    public String addExpense(User user){
+    public String addExpense(@RequestBody User user){
         userService.addUser(user);
         return "User added Successfully";
 
     }
     @GetMapping("getOne/{userId}")
-    public Optional<User> getExpense(Long userId){
+    public Optional<User> getExpense(@PathVariable Long userId){
         return userService.getUserById(userId);
 
     }
-    @DeleteMapping("/deleteUser")
-    public String deleteExpense(Long userId){
+    @DeleteMapping("/deleteUser/{userId}")
+    public String deleteExpense(@PathVariable Long userId){
         userService.deleteUser(userId);
         return "User deleted Successfully";
     }

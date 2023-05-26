@@ -1,6 +1,8 @@
 package com.expensetrackerapp.expensetracker.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +22,8 @@ public class Income {
     private Long incomeId;
     private double amount;
     private Date date;
-    private String source;
+    @Enumerated(EnumType.STRING)
+    private IncomeSource incomeSource;
     private String description;
     private Long userId;
 

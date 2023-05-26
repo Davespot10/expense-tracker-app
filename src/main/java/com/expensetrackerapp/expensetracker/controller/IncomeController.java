@@ -16,18 +16,18 @@ public class IncomeController {
     @Autowired
     private IncomeService incomeService;
     @PostMapping("/addIncome")
-    public String addExpense(Income income){
+    public String addExpense(@RequestBody Income income){
         incomeService.addIncome(income);
         return "Income added Successfully";
 
     }
     @GetMapping("getOne/{incomeId}")
-    public Optional<Income> getExpense(Long incomeId){
+    public Optional<Income> getExpense(@PathVariable Long incomeId){
         return incomeService.getIncomeById(incomeId);
 
     }
-    @DeleteMapping("/deleteIncome")
-    public String deleteExpense(Long incomeId){
+    @DeleteMapping("/deleteIncome/{incomeId}")
+    public String deleteExpense(@PathVariable Long incomeId){
         incomeService.deleteIncome(incomeId);
         return "Income deleted Successfully";
     }
