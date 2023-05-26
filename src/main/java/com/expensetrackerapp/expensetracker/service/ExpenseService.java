@@ -21,6 +21,18 @@ public class ExpenseService {
     public void deleteExpense(Long expenseId){
         expenseRepository.deleteById(expenseId);
     }
+    public void updateExpense(Long expenseId, Expense expense){
+        Optional<Expense> expense1=expenseRepository.findById(expenseId);
+        if(expense1.isPresent()){
+            Expense expense2=expense1.get();
+            expense2.setExpenseSource(expense.getExpenseSource());
+            expense2.setAmount(expense.getAmount());
+            expense2.setDate(expense.getDate());
+            expense2.setDescription(expense.getDescription());
+            expense2.setUserId(expense.getUserId());
+            expenseRepository.save(expense2);
+        }
+    }
     public List<Expense> getAllExpense(){
        return expenseRepository.findAll();
     }

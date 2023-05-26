@@ -1,6 +1,7 @@
 package com.expensetrackerapp.expensetracker.controller;
 
 import com.expensetrackerapp.expensetracker.model.Expense;
+import com.expensetrackerapp.expensetracker.model.Income;
 import com.expensetrackerapp.expensetracker.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,9 @@ public class ExpenseController {
     public List<Expense> getAllExpense(){
        return expenseService.getAllExpense();
     }
-
+    @PutMapping("/updateExpense/{expenseId}")
+    public String updateIncome(@PathVariable Long expenseId,@RequestBody Expense expense){
+        expenseService.updateExpense(expenseId,expense);
+        return "Expense Updated successfully";
+    }
 }

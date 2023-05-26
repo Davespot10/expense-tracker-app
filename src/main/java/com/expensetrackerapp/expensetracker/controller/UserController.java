@@ -35,4 +35,9 @@ public class UserController {
     public List<User> getAllExpense(){
         return userService.getAllUser();
     }
+    @PutMapping("/updateUser/{userId}")
+    public String updateUser(@PathVariable Long userId,@RequestBody User user){
+        userService.updateUser(userId,user);
+        return "User Updated successfully";
+    }
 }

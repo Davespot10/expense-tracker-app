@@ -2,6 +2,7 @@ package com.expensetrackerapp.expensetracker.controller;
 
 import com.expensetrackerapp.expensetracker.model.Expense;
 import com.expensetrackerapp.expensetracker.model.Income;
+import com.expensetrackerapp.expensetracker.model.User;
 import com.expensetrackerapp.expensetracker.service.ExpenseService;
 import com.expensetrackerapp.expensetracker.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,10 @@ public class IncomeController {
     public List<Income> getAllExpense(){
         return incomeService.getAllIncome();
     }
+    @PutMapping("/updateIncome/{incomeId}")
+    public String updateIncome(@PathVariable Long incomeId,@RequestBody Income income){
+        incomeService.updateIncome(incomeId,income);
+        return "Income Updated successfully";
+    }
+
 }
